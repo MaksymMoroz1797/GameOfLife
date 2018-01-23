@@ -80,9 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Moroz/CLionProjects/GameOfLife_1/Barrier .h">
-			<Option target="GameOfLife_1"/>
-		</Unit>
 		<Unit filename="C:/Users/Moroz/CLionProjects/GameOfLife_1/Field/Field.cpp">
 			<Option target="GameOfLife_1"/>
 		</Unit>
