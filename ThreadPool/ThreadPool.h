@@ -16,12 +16,13 @@
 class ThreadPool {
 public:
     ThreadPool();
-    ThreadPool( size_t threads );
+    ThreadPool(size_t threads);
+    ThreadPool(const ThreadPool &) = default;
     ~ThreadPool();
 
-    void initializeWithThreads( size_t threads );
+    void initializeWithThreads(size_t threads);
 
-    void schedule( const std::function<void()>& );
+    void schedule(const std::function<void()>&);
 
     void wait() const;
 
