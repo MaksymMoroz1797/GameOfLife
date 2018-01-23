@@ -2,11 +2,8 @@
 // Created by Moroz on 22.01.2018.
 //
 #include "Field.h"
-//#include "Barrier .h"
 #include <thread>
-#include <stdexcept>
 #include <fstream>
-#include <string>
 #include <iostream>
 
 using std::thread;
@@ -15,6 +12,7 @@ using std::thread;
 Field::Field(const std::vector < vector <bool> > & initMattrix_, int xSize_, int ySize_, int threadsNumber_):
         xSize(xSize_),
         ySize(ySize_),
+        pool(threadsNumber_),
         threadsNumber(threadsNumber_) {
     fieldMatrix = new volatile bool*[xSize];
     additionalFieldMatrix = new volatile bool *[ySize];
@@ -77,24 +75,23 @@ bool Field::getNextStageOfCell(int x, int y) {
 
 void Field::calculateNextField() {
     auto fieldCalcInRange = [&](int xLim, int yLim) {
-        for (int i = xLim; i < yLim; ++i) {
-            for (int j = 0; j < ySize; ++j) {
-                additionalFieldMatrix[i][j] = this->getNextStageOfCell(i, j);
+        return [=]() {
+            for (int i = xLim; i < yLim; ++i) {
+                for (int j = 0; j < ySize; ++j) {
+                    additionalFieldMatrix[i][j] = this->getNextStageOfCell(i, j);
+                }
             }
-        }
+        };
     };
-    vector<std::thread *> threads(0);
     int part = xSize / threadsNumber;
     for (int i = 0; i < threadsNumber; ++i) {
         int leftLim = part * i;
         int rightLim = i != threadsNumber - 1 ? part * (i + 1) : xSize;
-        if (leftLim != rightLim) {
-            threads.push_back(new thread(fieldCalcInRange, leftLim, rightLim));
+        if (leftLim < rightLim) {
+            pool.schedule(fieldCalcInRange(leftLim, rightLim));
         }
     }
-    for (thread * thr : threads) {
-        thr->join();
-    }
+    pool.wait();
     volatile bool * * tmp = this->fieldMatrix;
     this->fieldMatrix = this->additionalFieldMatrix;
     this->additionalFieldMatrix = tmp;

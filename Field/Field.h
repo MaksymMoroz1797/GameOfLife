@@ -1,11 +1,12 @@
 //
 // Created by Moroz on 21.01.2018.
 //
-#include <vector>
-#include <mutex>
 
 #ifndef GAMEOFLIFE_1_FIELD_H
 #define GAMEOFLIFE_1_FIELD_H
+#include <vector>
+#include <mutex>
+#include "../ThreadPool/ThreadPool.h"
 
 using std::vector;
 
@@ -28,6 +29,7 @@ private:
     const int threadsNumber;
     volatile bool * * fieldMatrix;
     volatile bool * * additionalFieldMatrix;
+    ThreadPool pool;
 };
 
 void consoleFieldPrint(const Field & field);

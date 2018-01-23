@@ -203,6 +203,33 @@ Game/Game.cpp.s:
 	$(MAKE) -f CMakeFiles\GameOfLife_1.dir\build.make CMakeFiles/GameOfLife_1.dir/Game/Game.cpp.s
 .PHONY : Game/Game.cpp.s
 
+ThreadPool/ThreadPool.obj: ThreadPool/ThreadPool.cpp.obj
+
+.PHONY : ThreadPool/ThreadPool.obj
+
+# target to build an object file
+ThreadPool/ThreadPool.cpp.obj:
+	$(MAKE) -f CMakeFiles\GameOfLife_1.dir\build.make CMakeFiles/GameOfLife_1.dir/ThreadPool/ThreadPool.cpp.obj
+.PHONY : ThreadPool/ThreadPool.cpp.obj
+
+ThreadPool/ThreadPool.i: ThreadPool/ThreadPool.cpp.i
+
+.PHONY : ThreadPool/ThreadPool.i
+
+# target to preprocess a source file
+ThreadPool/ThreadPool.cpp.i:
+	$(MAKE) -f CMakeFiles\GameOfLife_1.dir\build.make CMakeFiles/GameOfLife_1.dir/ThreadPool/ThreadPool.cpp.i
+.PHONY : ThreadPool/ThreadPool.cpp.i
+
+ThreadPool/ThreadPool.s: ThreadPool/ThreadPool.cpp.s
+
+.PHONY : ThreadPool/ThreadPool.s
+
+# target to generate assembly for a file
+ThreadPool/ThreadPool.cpp.s:
+	$(MAKE) -f CMakeFiles\GameOfLife_1.dir\build.make CMakeFiles/GameOfLife_1.dir/ThreadPool/ThreadPool.cpp.s
+.PHONY : ThreadPool/ThreadPool.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -248,6 +275,9 @@ help:
 	@echo ... Game/Game.obj
 	@echo ... Game/Game.i
 	@echo ... Game/Game.s
+	@echo ... ThreadPool/ThreadPool.obj
+	@echo ... ThreadPool/ThreadPool.i
+	@echo ... ThreadPool/ThreadPool.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

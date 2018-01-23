@@ -101,6 +101,12 @@
 		<Unit filename="C:/Users/Moroz/CLionProjects/GameOfLife_1/Game/Game.h">
 			<Option target="GameOfLife_1"/>
 		</Unit>
+		<Unit filename="C:/Users/Moroz/CLionProjects/GameOfLife_1/ThreadPool/ThreadPool.cpp">
+			<Option target="GameOfLife_1"/>
+		</Unit>
+		<Unit filename="C:/Users/Moroz/CLionProjects/GameOfLife_1/ThreadPool/ThreadPool.h">
+			<Option target="GameOfLife_1"/>
+		</Unit>
 		<Unit filename="C:/Users/Moroz/CLionProjects/GameOfLife_1/main.cpp">
 			<Option target="GameOfLife_1"/>
 		</Unit>
